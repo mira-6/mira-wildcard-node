@@ -33,7 +33,7 @@ class MiraWildcard:
                 random.seed(seed)
                 choice = random.choice(filecontents)
                 seed = seed + 1
-                if re.search("<wildcard:.*>", choice):
+                if re.search(r"<wildcard:.{0,}?>", choice):
                     choice = parsestring(choice, seed)
                 text = text.replace(wildcard, choice, 1)
 
@@ -45,7 +45,7 @@ class MiraWildcard:
                 random.seed(seed)
                 choice = random.choice(terms)
                 seed = seed + 1
-                if re.search("<wildcard:.*>", choice) or re.search(r"{.+?}", choice) or re.search(r"<random:.{0,}?>", choice):
+                if re.search(r"<wildcard:.{0,}?>", choice) or re.search(r"{.+?}", choice) or re.search(r"<random:.{0,}?>", choice):
                     choice = parsestring(choice, seed)
                 text = text.replace(wildcard, choice, 1)
 
@@ -58,7 +58,7 @@ class MiraWildcard:
                 random.seed(seed)
                 choice = random.choice(terms)
                 seed = seed + 1
-                if re.search("<wildcard:.*>", choice) or re.search(r"<random:.{0,}?>", choice) or re.search(r"{.+?}", choice):
+                if re.search(r"<wildcard:.{0,}?>", choice) or re.search(r"<random:.{0,}?>", choice) or re.search(r"{.+?}", choice):
                     choice = parsestring(choice, seed)
                 text = text.replace(wildcard, choice, 1)
 
